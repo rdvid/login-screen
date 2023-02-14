@@ -1,15 +1,31 @@
 <h4 class="text-center"> Login </h4>
-
-<form class="form mt-4">
-
+<form class="form mt-4" (ngSubmit)="login()">
   <div class="form-group">
-    <input class="form-control" placeholder="Username" />
+    <input
+      class="form-control"
+      placeholder="Username"
+      name="username"
+      [(ngModel)]="username"
+      #userCamp = "ngModel"
+      required
+    />
+    <app-message message="User is Invalid" *ngIf="userCamp.invalid && userCamp.touched"></app-message>
   </div>
-
+  <br>
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Password" />
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      name="password"
+      [(ngModel)]="password"
+      #passwordCamp = "ngModel"
+      required
+    />
+    <app-message message="Password is Mandatory" *ngIf="passwordCamp.invalid && passwordCamp.touched"></app-message>
   </div>
-
-  <button type="submit" class="btn btn-primary btn-block">Login</button>
-
+  <br>
+  <div class="d-grid gap-2">
+    <button type="submit" class="btn btn-primary">Login</button>
+  </div>
 </form>
