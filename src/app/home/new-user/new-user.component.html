@@ -1,0 +1,64 @@
+<h4 class="text-center">
+  Register and show to world your pet!
+</h4>
+<form class="form mt-4" [formGroup]="newUserForm" (submit)="register()">
+  <div class="mb-2">
+    <input
+      formControlName="email"
+      placeholder="Email"
+      class="form-control"
+    />
+    <app-message
+    *ngIf="
+      newUserForm.get('email')?.errors?.['required'] &&
+      newUserForm.get('email')?.touched
+    "
+    message="Email needed">
+
+    </app-message>
+    <app-message
+      *ngIf="newUserForm.get('email')?.errors?.['email'] &&
+      newUserForm.get('email')?.touched"
+    message="Email in an invalid format"></app-message>
+  </div>
+  <div class="mb-2">
+    <input
+      type="text"
+      formControlName="fullName"
+      placeholder="Full name"
+      class="form-control"
+    />
+    <app-message
+    *ngIf="newUserForm.get('fullName')?.errors &&
+    newUserForm.get('fullName')?.touched"
+
+    message="Invalid name"></app-message>
+  </div>
+  <div class="mb-2">
+    <input
+      type="text"
+      formControlName="userName"
+      placeholder="User"
+      class="form-control"
+    />
+    <app-message
+    *ngIf="newUserForm.get('userName')?.errors?.['minusculo'] &&
+    newUserForm.get('userName')?.touched
+    "
+    message="User needs to be in lowercase"></app-message>
+  </div>
+  <div class="mb-2">
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+      class="form-control"
+    />
+  </div>
+  <div class="d-grid gap-2">
+    <button class="btn btn-primary">Register</button>
+  </div>
+</form>
+<p class="text-center">
+  Already have an account? <a [routerLink]="['']">Sign in</a>
+</p>

@@ -1,6 +1,6 @@
 <h4 class="text-center"> Login </h4>
 <form class="form mt-4" (ngSubmit)="login()">
-  <div class="form-group">
+  <div class="mb-2">
     <input
       class="form-control"
       placeholder="Username"
@@ -11,8 +11,7 @@
     />
     <app-message message="User is Invalid" *ngIf="userCamp.invalid && userCamp.touched"></app-message>
   </div>
-  <br>
-  <div class="form-group">
+  <div class="mb-2">
     <input
       type="password"
       class="form-control"
@@ -24,8 +23,10 @@
     />
     <app-message message="Password is Mandatory" *ngIf="passwordCamp.invalid && passwordCamp.touched"></app-message>
   </div>
-  <br>
   <div class="d-grid gap-2">
     <button type="submit" class="btn btn-primary">Login</button>
   </div>
 </form>
+<p class="text-center">
+  Don't have an account? <a [routerLink]="['newuser']">Sign up</a>
+</p>
