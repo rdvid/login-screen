@@ -46,6 +46,11 @@
     newUserForm.get('userName')?.touched
     "
     message="User needs to be in lowercase"></app-message>
+
+    <app-message
+    *ngIf="newUserForm.get('userName')?.errors?.['UserExist']"
+    message="User already exists"></app-message>
+
   </div>
   <div class="mb-2">
     <input
@@ -54,6 +59,9 @@
       placeholder="Password"
       class="form-control"
     />
+    <app-message
+    *ngIf="newUserForm?.errors?.['passwordEqualUser']"
+    message="Password must have be different from user"></app-message>
   </div>
   <div class="d-grid gap-2">
     <button class="btn btn-primary">Register</button>
